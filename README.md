@@ -1,4 +1,4 @@
-#PongLC
+# PongLC
 ## An implementation of Pong in Haskell.
 
 ### How to run
