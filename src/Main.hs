@@ -11,13 +11,9 @@ main = do
   rightRacketPos <- newIORef (0, 0)
   leftRacketPos <- newIORef (0, 0)
 
-  keyboardMouseCallback $= Just (keyboardMovement rightRacketPos leftRacketPos)
+  keyboardMouseCallback $= Just (keyboardMouse rightRacketPos leftRacketPos)
 
   idleCallback $= Just (idle)
   displayCallback $= display rightRacketPos leftRacketPos
 
   mainLoop
-
-keyboardMovement right left =
-  -- keyboardMouseRight right
-  keyboardMouseLeft left
