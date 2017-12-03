@@ -5,7 +5,8 @@ import Graphics.UI.GLUT
 vertex3f :: (GLfloat, GLfloat, GLfloat) -> IO ()
 vertex3f (x, y, z) = vertex $ Vertex3 x y z
 
--- Renders the rackets, taking which side to render as parameter
+-- Renders the rackets, taking which paddle we are to render (L or R)
+-- and the current y value of the paddle
 racket :: String -> Float -> IO()
 racket side y' =
   if side == "Right" then
