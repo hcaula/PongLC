@@ -7,8 +7,9 @@ Make sure you have the full Haskel Platform installed, available [here](https://
 After that, run:
 
 ````
-ghc --make src/HelloWorld.hs
-src/HelloWorld
+cd [Project_Path]/src
+ghc Main.hs
+Main
 ````
 
 ## Authors
