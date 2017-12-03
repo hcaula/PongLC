@@ -28,13 +28,11 @@ display rightRacketPos leftRacketPos ballPos = do
 
 -- Idle function - standard from OpenGl
 -- Responsible for animations
-idle :: IORef (GLfloat, GLfloat) -> IORef (GLfloat, GLfloat) -> IORef (GLfloat, GLfloat) -> IORef (GLfloat, GLfloat) -> IdleCallback
-idle ballPos ballSpeed rightPos leftPos = do
+idle :: IORef (GLfloat, GLfloat) -> IORef (GLfloat, GLfloat) ->  IdleCallback
+idle ballPos ballSpeed  = do
   (ballX, ballY) <- get ballPos
-  (leftX, leftY) <- get leftPos
-  (rightX, rightY) <- get rightPos
 
-  if (ballX >= 0.8 || ballX <= -0.8) then
+  if (hitPaddle (ballX, ballY)) then
     ballSpeed $~! \(x,y) -> (x*(-1),y)
   else ballSpeed $~! \(x,y) -> (x,y)
 
@@ -43,6 +41,14 @@ idle ballPos ballSpeed rightPos leftPos = do
   ballPos $~! \(x,y) -> (x+speedX,y+speedY)
   postRedisplay Nothing
 
+hitPaddle :: (Float, Float) -> Bool
+hitPaddle ball = do
+  -- putStrLn "hello, world"
+  if(ballX <= -0.8) then True
+  else if(ballX >= 0.7) then True
+  else False
+  where ballX = fst ball
+        ballY = snd ball
 
 -- RACKETS THREADS GO HERE!
 -- Each thread should run one of those two functions

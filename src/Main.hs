@@ -23,7 +23,7 @@ main = do
   keyboardMouseCallback $= Just (keyboardMouse rightRacketPos leftRacketPos)
 
   -- Call idle event (responsible for animations)
-  idleCallback $= Just (idle ballPos ballSpeed rightRacketPos leftRacketPos)
+  idleCallback $= Just (idle ballPos ballSpeed)
 
   -- Call display events (we do stuff here)
   -- rightRacketPos and leftRacketPos are parameters that
