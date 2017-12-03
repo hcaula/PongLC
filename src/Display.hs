@@ -5,24 +5,21 @@ import Data.IORef
 
 import Elements
 
-display :: IORef (GLfloat, GLfloat) -> DisplayCallback
-display rightRacketPos = do
+display :: IORef (GLfloat, GLfloat) -> IORef (GLfloat, GLfloat) -> DisplayCallback
+display rightRacketPos leftRacketPos = do
   clear [ColorBuffer]
   loadIdentity
-  (x',rightY) <- get rightRacketPos
-  let racketLeft = racket "Left" rightY
-
-  -- let color3f r g b = color $ Color3 r g (b :: GLfloat)
-  --     vertex3f x y z = vertex $ Vertex3 x y (z :: GLfloat)
+  (rightX,rightY) <- get rightRacketPos
+  (leftX,leftY) <- get leftRacketPos
+  let racketRight = racket "Right" rightY
+  let racketLeft = racket "Left" leftY
 
   -- Calls for the render rackets function
   preservingMatrix $ do
     racketLeft
-    racket "Right" 1
+    racketRight
   flush
 
-idle :: IORef GLfloat -> IORef GLfloat -> IdleCallback
-idle angle delta = do
-  d <- get delta
-  angle $~! (+ d)
+idle :: IdleCallback
+idle = do
   postRedisplay Nothing

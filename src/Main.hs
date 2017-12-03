@@ -7,8 +7,17 @@ main :: IO ()
 main = do
   (_progName, _args) <- getArgsAndInitialize
   _window <- createWindow "PongLC"
+
   rightRacketPos <- newIORef (0, 0)
-  keyboardMouseCallback $= Just (keyboardMouse rightRacketPos)
-  -- idleCallback $= Just (idle angle delta)
-  displayCallback $= display rightRacketPos
+  leftRacketPos <- newIORef (0, 0)
+
+  keyboardMouseCallback $= Just (keyboardMovement rightRacketPos leftRacketPos)
+
+  idleCallback $= Just (idle)
+  displayCallback $= display rightRacketPos leftRacketPos
+
   mainLoop
+
+keyboardMovement right left =
+  -- keyboardMouseRight right
+  keyboardMouseLeft left
