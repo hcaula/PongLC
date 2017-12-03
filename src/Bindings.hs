@@ -8,8 +8,8 @@ reshape :: ReshapeCallback
 reshape size = do
   viewport $= (Position 0 0, size)
 
-keyboardMouse :: IORef GLfloat -> IORef (GLfloat, GLfloat) -> KeyboardMouseCallback
-keyboardMouse a right key Down _ _ = case key of
+keyboardMouse :: IORef (GLfloat, GLfloat) -> KeyboardMouseCallback
+keyboardMouse right key Down _ _ = case key of
   -- (Char ' ') -> a $~! negate
   -- (Char '+') -> a $~! (* 2)
   -- (Char '-') -> a $~! (/ 2)
