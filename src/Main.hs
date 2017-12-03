@@ -15,17 +15,21 @@ main = do
   rightRacketPos <- newIORef (0, 0)
   leftRacketPos <- newIORef (0, 0)
 
+  ballPos <- newIORef (0,0)
+  ballSpeed <- newIORef (0.01,0)
+
+
   -- Call the keyboard event
   keyboardMouseCallback $= Just (keyboardMouse rightRacketPos leftRacketPos)
 
   -- Call idle event (responsible for animations)
-  idleCallback $= Just (idle)
+  idleCallback $= Just (idle ballPos ballSpeed rightRacketPos leftRacketPos)
 
   -- Call display events (we do stuff here)
   -- rightRacketPos and leftRacketPos are parameters that
   -- are updated in the keyboardMouse function (defined on
   -- Bindings.hs file)
-  displayCallback $= display rightRacketPos leftRacketPos
+  displayCallback $= display rightRacketPos leftRacketPos ballPos
 
   -- Loop
   mainLoop

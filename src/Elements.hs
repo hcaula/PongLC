@@ -15,3 +15,7 @@ racket side y' =
     renderPrimitive Quads $ mapM_ vertex3f [(-0.8,y',0), (-0.9,y',0),(-0.9,-0.5+y',0),(-0.8,-0.5+y',0)]
   else
     renderPrimitive Quads $ mapM_ vertex3f [(0,0,0), (0,0,0),(0,0,0),(0,0,0)]
+
+ball :: Float -> Float -> IO ()
+ball x y =
+  renderPrimitive Quads $ mapM_ vertex3f [(x,y,0), (0.1+x,y,0),(0.1+x,0.1+y,0),(x,0.1+y,0)]
