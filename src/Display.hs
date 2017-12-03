@@ -9,10 +9,9 @@ display :: IORef (GLfloat, GLfloat) -> IORef (GLfloat, GLfloat) -> DisplayCallba
 display rightRacketPos leftRacketPos = do
   clear [ColorBuffer]
   loadIdentity
-  (rightX,rightY) <- get rightRacketPos
-  (leftX,leftY) <- get leftRacketPos
-  let racketRight = racket "Right" rightY
-  let racketLeft = racket "Left" leftY
+
+  let racketRight = getPaddleRight rightRacketPos
+  let racketLeft = getPaddleLeft leftRacketPos
 
   -- Calls for the render rackets function
   preservingMatrix $ do
@@ -23,3 +22,13 @@ display rightRacketPos leftRacketPos = do
 idle :: IdleCallback
 idle = do
   postRedisplay Nothing
+
+getPaddleRight :: IORef (GLfloat, GLfloat) -> IO()
+getPaddleRight right = do
+  (x, y) <- get right
+  racket "Right" y
+
+getPaddleLeft :: IORef (GLfloat, GLfloat) -> IO()
+getPaddleLeft left = do
+  (x, y) <- get left
+  racket "Left" y
