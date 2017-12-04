@@ -2,6 +2,7 @@ import Graphics.UI.GLUT
 import Data.IORef
 import Bindings
 import Display
+import Control.Concurrent
 
 main :: IO ()
 main = do
@@ -20,7 +21,8 @@ main = do
 
 
   -- Call the keyboard event
-  keyboardMouseCallback $= Just (keyboardMouse rightRacketPos leftRacketPos)
+  forkIO(keyboardMouseCallback $= Just (keyboardMouseLeft leftRacketPos))
+  forkIO(keyboardMouseCallback $= Just (keyboardMouseRight rightRacketPos))
 
   -- Call idle event (responsible for animations)
   idleCallback $= Just (idle ballPos ballSpeed)
