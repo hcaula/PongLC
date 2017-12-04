@@ -1,37 +1,19 @@
-import Graphics.UI.GLUT
-import Data.IORef
 import Bindings
-import Display
 import Control.Concurrent
+import Graphics.UI.Fungen
+
+data GameAttribute = GA Int Int
+
+scoreLeftPlayer = 0
+scoreRightPlayer = 0
 
 main :: IO ()
 main = do
-  -- Initialize OpenGL libraries
-  (_progName, _args) <- getArgsAndInitialize
-
-  -- Create the Window
-  _window <- createWindow "PongLC"
-
-  -- Initialize left and right paddles
-  rightRacketPos <- newIORef (0, 0)
-  leftRacketPos <- newIORef (0, 0)
-
-  ballPos <- newIORef (0,0)
-  ballSpeed <- newIORef (0.01,0)
-
-
-  -- Call the keyboard event
-  forkIO(keyboardMouseCallback $= Just (keyboardMouseLeft leftRacketPos))
-  forkIO(keyboardMouseCallback $= Just (keyboardMouseRight rightRacketPos))
-
-  -- Call idle event (responsible for animations)
-  idleCallback $= Just (idle ballPos ballSpeed)
-
-  -- Call display events (we do stuff here)
-  -- rightRacketPos and leftRacketPos are parameters that
-  -- are updated in the keyboardMouse function (defined on
-  -- Bindings.hs file)
-  displayCallback $= display rightRacketPos leftRacketPos ballPos
-
-  -- Loop
-  mainLoop
+  let winConfig     = ((0, 0), (250, 250), "PongLC")
+      leftRacket    = objectGroup "racketGroup" [createRacket]
+      rightRacket   = objectGroup "racketGroup" [createRacket]
+      ball          = objectGroup "ballGroup" [createBall]
+      gameMap       = colorMap 0 0 0 250 250
+      gameAttribute = GA scoreLeftPlayer scoreRightPlayer
+      bindings      = [(SpecialKey KeyUp, StillDown, moveRacketUp), (SpacialKey, StillDown, moveRacketDown)]
+  funInit winConfig gameMap [leftRacket, rightRacket, ball] () gameAttribute bindings ()
