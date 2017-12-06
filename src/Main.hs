@@ -44,10 +44,10 @@ gameCycle = do
   col1 <- objectsCollision ball p1
   col2 <- objectsCollision ball p2
   when (col1 || col2) (do
+                      if (vx < 0) then setObjectSpeed (-vx+ballIncrement, getRandomY hits) ball
+                      else setObjectSpeed (-vx-ballIncrement, getRandomY hits) ball
+
                       (setGameAttribute (Elements (p1Score, p2Score, hits+1)))
-                      if ((mod hits 2) == 0) then
-                        setObjectSpeed (-vx+ballIncrement, getRandomY hits) ball
-                      else (setObjectSpeed (-vx, getRandomY hits) ball)
                       )
 
   col3 <- objectTopMapCollision ball
@@ -65,8 +65,6 @@ gameCycle = do
   when (col5 || col6) (do
                       (setObjectPosition middleScreen ball)
                       (Elements (points1, points2, hits)) <- getGameAttribute
-                      setGameAttribute (Elements (points1, points2, 0))
-
-                      setObjectSpeed (ballInitialSpeed, vy) ball)
+                      setObjectSpeed (ballInitialSpeed, 0) ball)
 
   showFPS TimesRoman24 (w-40,0) 1.0 0.0 0.0

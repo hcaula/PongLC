@@ -1,6 +1,5 @@
 module Globals where
 import Graphics.Rendering.OpenGL (GLdouble)
-import System.Random
 
 -- In order: P1Score, P2Score, amount of hits
 data GameAttribute = Elements (Int, Int, Integer)
