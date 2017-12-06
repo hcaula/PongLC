@@ -68,7 +68,6 @@ mlHeight = h/20
 fontSize :: (GLdouble, GLdouble)
 fontSize = (h/16, h/8)
 
-
 -- Random values for Y list
 randomNumbers = [-12, 18, -10, -2, 10, 21, 13, 12, -0, -4, -30, -10, -7, -9, 4, -20, -30, -13, -10, 3]
 

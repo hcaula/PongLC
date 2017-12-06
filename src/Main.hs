@@ -104,8 +104,11 @@ gameCycle = do
               -- Same thing for right goal
               setGameAttribute (Elements (p1Score + 1, p2Score, hits))
               (setObjectCurrentPicture (p1Score+2) p1ScoreDisplay))
+
   when (col5 || col6) (do
                       -- For both cases, reset the ball in the middle;
                       (setObjectPosition middleScreen ball)
                       -- and reset its horizontal speed to initial
-                      setObjectSpeed (ballInitialSpeed, 0) ball)
+                      setObjectSpeed (ballInitialSpeed, 0) ball
+
+                      )

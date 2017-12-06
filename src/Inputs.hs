@@ -12,7 +12,9 @@ movement = [
     (Char 'S', StillDown, moveP1Down),
     (Char 's', StillDown, moveP1Down),
     (SpecialKey KeyUp, StillDown, moveP2Up),
-    (SpecialKey KeyDown,  StillDown, moveP2Down)
+    (SpecialKey KeyDown,  StillDown, moveP2Down),
+    (Char 'R', Press, resetGame),
+    (Char 'r', Press, resetGame)
     ]
 
 moveP1Up :: Modifiers -> Position -> IOGame GameAttribute () () () ()
@@ -60,3 +62,21 @@ moveP2Down _ _ = do
   if (pY - (sY/2) - barSpeed >= 0)
     then (setObjectPosition (pX, (pY - barSpeed)) obj)
     else (setObjectPosition (pX,sY/2) obj)
+
+resetGame :: Modifiers -> Position -> IOGame GameAttribute () () () ()
+resetGame _ _ = do
+  -- Set both points and hits to zero
+  setGameAttribute (Elements (0,0,0))
+
+  -- Get the to be reseted objects
+  ball <- findObject "ball" "ballGroup"
+  p1ScoreDisplay <- findObject "ScoreP1" "scoreGroup"
+  p2ScoreDisplay <- findObject "ScoreP2" "scoreGroup"
+
+  -- Set the ball position and speed to initial
+  setObjectPosition middleScreen ball
+  setObjectSpeed (-ballInitialSpeed, 0) ball
+
+  -- Set both scores displays to zero
+  setObjectCurrentPicture 1 p1ScoreDisplay
+  setObjectCurrentPicture 1 p2ScoreDisplay
