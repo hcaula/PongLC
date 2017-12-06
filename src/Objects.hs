@@ -8,6 +8,7 @@ createBall :: GameObject ()
 createBall =
   -- The ballBound is set on Globals.hs
   let ballBound = ball
+      -- Creates the for sided poligon
       ballPic = Basic (Polyg ballBound 1.0 1.0 1.0 Filled)
   in object "ball" ballPic False (w/2,h/2) (-ballInitialSpeed,0) ()
 
