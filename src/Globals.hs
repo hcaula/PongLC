@@ -36,6 +36,9 @@ bar = [(-barWidth, -barHeight), (barWidth, -barHeight),(barWidth, barHeight),(-b
 ball :: [(Double, Double)]
 ball = [(-ballSize, -ballSize), (ballSize, -ballSize), (ballSize, ballSize), (-ballSize, ballSize)]
 
+middleLine :: [(Double, Double)]
+middleLine = [(-mlWidth, -mlHeight), (mlWidth, -mlHeight),(mlWidth, mlHeight),(-mlWidth, mlHeight)]
+
 -- Width of the bar: 2.5% of screen width
 barWidth = w/50
 
@@ -46,7 +49,7 @@ barHeight = h/8
 offset = barWidth*2
 
 -- Bar speed
-barSpeed = 20 :: GLdouble
+barSpeed = 30 :: GLdouble
 
 -- Ball size
 ballSize = barWidth
@@ -57,10 +60,15 @@ ballIncrement = 2 :: GLdouble
 -- Initial Ball Speed (this value is not changeable)
 ballInitialSpeed = 12 :: GLdouble
 
--- Random Y Limit
-randomYLimit = 10;
+mlWidth = barWidth/2
+mlHeight = h/20
 
-randomNumbers = [-6, 9, -10, -2, 0, 4, 13, 6, -12, -4, -15, -4, -7, -9, 4, -5, -20, -2, -10, 3]
+fontSize :: (GLdouble, GLdouble)
+fontSize = (h/16, h/8)
+
+
+-- Random values for Y list
+randomNumbers = [-12, 18, -10, -2, 10, 21, 13, 12, -0, -4, -30, -10, -7, -9, 4, -20, -30, -13, -10, 3]
 
 getRandomY :: Integer -> Double
 getRandomY hits = randomNumbers!!(fromIntegral (mod hits 20))

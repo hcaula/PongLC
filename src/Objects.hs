@@ -2,6 +2,7 @@ module Objects where
 import Globals
 import Graphics.UI.Fungen
 import Graphics.Rendering.OpenGL (GLdouble)
+import Data.Char
 
 createBall :: GameObject ()
 createBall =
@@ -19,8 +20,14 @@ createPlayer player =
 
 createScore :: String -> GameObject ()
 createScore player =
-  let scorePic = Tex (25, 50) 1
+  let scorePic = Tex fontSize 1
   in object player scorePic False (scorePosition player) (0,0) ()
+
+createMiddleLine :: Integer -> GameObject ()
+createMiddleLine line =
+  let mlBound = middleLine
+      mlPic   = Basic (Polyg mlBound 1.0 1.0 1.0 Filled)
+  in object "Line #" mlPic False (middleLinePosition line) (0,0) ()
 
 -- Auxiliar function to get each player initial position
 initialPosition :: String -> (GLdouble, GLdouble)
@@ -32,6 +39,9 @@ initialPosition player =
 
 scorePosition :: String -> (GLdouble, GLdouble)
 scorePosition player =
-  if player == "ScoreP1" then (w/2 - 50, h - 50)
-  else if player == "ScoreP2" then (w/2 + 50, h - 50);
+  if player == "ScoreP1" then (w/2 - (fst fontSize)*2, h - 50)
+  else if player == "ScoreP2" then (w/2 + (fst fontSize)*2, h - 50);
   else (0,0)
+
+middleLinePosition :: Integer -> (GLdouble, GLdouble)
+middleLinePosition line = (w/2, h/10 * (fromIntegral line) * 2)

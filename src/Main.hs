@@ -15,9 +15,10 @@ main = do
       players = objectGroup "playerGroup"  [createPlayer "P1", createPlayer "P2"]
       ball = objectGroup "ballGroup" [createBall]
       score = objectGroup "scoreGroup" [createScore "ScoreP1", createScore "ScoreP2"]
+      middleLine = objectGroup "middleLine" [createMiddleLine x | x <- [0..5]]
       initElements = Elements (0,0,0)
       input = movement
-  funInit winConfig gameMap [players,ball,score] () initElements input gameCycle (Timer 30) bmpList
+  funInit winConfig gameMap [players,ball,score,middleLine] () initElements input gameCycle (Timer 30) bmpList
 
 gameCycle :: IOGame GameAttribute () () () ()
 gameCycle = do
@@ -31,6 +32,7 @@ gameCycle = do
 
   when (p1Score == 9 || p2Score == 9) (do
                                         setObjectSpeed (0,0) ball
+                                        setObjectPosition (w/2,h/2) ball
                                         setGameAttribute (Elements (11,11,0)))
 
 
