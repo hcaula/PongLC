@@ -39,8 +39,8 @@ initialPosition player =
 
 scorePosition :: String -> (GLdouble, GLdouble)
 scorePosition player =
-  if player == "ScoreP1" then (w/2 - (fst fontSize)*2, h - 50)
-  else if player == "ScoreP2" then (w/2 + (fst fontSize)*2, h - 50);
+  if player == "ScoreP1" then (w/2 - (fst fontSize)*2, h - 80)
+  else if player == "ScoreP2" then (w/2 + (fst fontSize)*2, h - 80);
   else (0,0)
 
 middleLinePosition :: Integer -> (GLdouble, GLdouble)
