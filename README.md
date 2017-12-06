@@ -2,7 +2,7 @@
 A multithread implementation of Pong in Haskell.
 
 ## Libraries used
-- [FuGEn](https://github.com/haskell-game/fungen) for game logic, sprite rendering, sounds, inputs and collision detection;
+- [FuGEn](https://github.com/haskell-game/fungen) for game logic, sprite rendering, inputs and collision detection;
 - [GLUT](http://hackage.haskell.org/package/GLUT) for OpenGL friendly number formats.
 
 ## How to run

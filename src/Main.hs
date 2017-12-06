@@ -8,7 +8,6 @@ import Graphics.Rendering.OpenGL (GLdouble)
 
 main :: IO ()
 main = do
-  -- texbmp <- getDataFileName "examples/pong/tex.bmp"
   let winConfig = ((100,80),(width,height), "PongLC")
       bmpList = imageList
       gameMap = textureMap 0 30 30 w h
