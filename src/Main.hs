@@ -10,13 +10,15 @@ main :: IO ()
 main = do
   -- texbmp <- getDataFileName "examples/pong/tex.bmp"
   let winConfig = ((100,80),(width,height), "PongLC")
-      bmpList = [("../assets/imgs/black.bmp", Nothing)]
+      bmpList = [("../assets/imgs/black.bmp", Nothing),
+                  ("../assets/imgs/0.bmp", Nothing)]
       gameMap = textureMap 0 30 30 w h
       players = objectGroup "playerGroup"  [createPlayer "P1", createPlayer "P2"]
       ball = objectGroup "ballGroup" [createBall]
+      score = objectGroup "scoreGroup" [createScore "ScoreP1", createScore "ScoreP2"]
       initElements = Elements (0,0,0)
       input = movement
-  funInit winConfig gameMap [players,ball] () initElements input gameCycle (Timer 15) bmpList
+  funInit winConfig gameMap [players,ball,score] () initElements input gameCycle (Timer 15) bmpList
 
 gameCycle :: IOGame GameAttribute () () () ()
 gameCycle = do
