@@ -5,8 +5,6 @@ import Graphics.UI.GLUT
 import Graphics.Rendering.OpenGL (GLdouble)
 import Settings
 
-data GameAttribute = Score Int
-
 movement = [
     (Char 'W', StillDown, moveP1Up),
     (Char 'w', StillDown, moveP1Up),

@@ -1,6 +1,9 @@
 module Settings where
 import Graphics.Rendering.OpenGL (GLdouble)
 
+-- In order: P1Score, P2Score, amount of hits
+data GameAttribute = Elements (Int, Int, Integer)
+
 -- Screen resolution in pixels
 width = 800 :: Int
 height = 600 :: Int
@@ -8,6 +11,10 @@ height = 600 :: Int
 -- Screen resolution converted to double
 w = fromIntegral width :: GLdouble
 h = fromIntegral height :: GLdouble
+
+-- Middle of the screen
+middleScreen :: (GLdouble, GLdouble)
+middleScreen = (w/2, h/2)
 
 -- Bars sprites measures
 bar :: [(Double, Double)]
@@ -26,8 +33,14 @@ barHeight = h/8
 -- Offset (distance between bar and screen horizontal border)
 offset = barWidth*2
 
--- Ball size
-ballSize = barWidth;
-
 -- Bar speed
-barSpeed = 10 :: GLdouble
+barSpeed = 20 :: GLdouble
+
+-- Ball size
+ballSize = barWidth
+
+-- Ball increment speed for each beat
+ballIncrement = 2 :: GLdouble
+
+-- Initial Ball Speed (this value is not changeable)
+ballInitialSpeed = -8 :: GLdouble
