@@ -17,7 +17,16 @@ middleScreen :: (GLdouble, GLdouble)
 middleScreen = (w/2, h/2)
 
 imageList = [("../assets/imgs/black.bmp", Nothing),
-            ("../assets/imgs/0.bmp", Nothing)]
+            ("../assets/imgs/0.bmp", Nothing),
+            ("../assets/imgs/1.bmp", Nothing),
+            ("../assets/imgs/2.bmp", Nothing),
+            ("../assets/imgs/3.bmp", Nothing),
+            ("../assets/imgs/4.bmp", Nothing),
+            ("../assets/imgs/5.bmp", Nothing),
+            ("../assets/imgs/6.bmp", Nothing),
+            ("../assets/imgs/7.bmp", Nothing),
+            ("../assets/imgs/8.bmp", Nothing),
+            ("../assets/imgs/9.bmp", Nothing)]
 
 -- Bars sprites measures
 bar :: [(Double, Double)]

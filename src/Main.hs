@@ -29,6 +29,8 @@ gameCycle = do
   ball <- findObject "ball" "ballGroup"
   p1 <- findObject "P1" "playerGroup"
   p2 <- findObject "P2" "playerGroup"
+  p1ScoreDisplay <- findObject "ScoreP1" "scoreGroup"
+  p2ScoreDisplay <- findObject "ScoreP2" "scoreGroup"
 
   let (vx,vy) = getGameObjectSpeed ball
   printOnScreen (show vx) TimesRoman24 (150,0) 1.0 1.0 1.0
@@ -48,8 +50,12 @@ gameCycle = do
 
   col5 <- objectLeftMapCollision ball
   col6 <- objectRightMapCollision ball
-  when (col5) (do setGameAttribute (Elements (p1Score, p2Score + 1, hits)))
-  when (col6) (do setGameAttribute (Elements (p1Score + 1, p2Score, hits)))
+  when (col5) (do
+              setGameAttribute (Elements (p1Score, p2Score + 1, hits))
+              setObjectCurrentPicture (p2Score+2) p2ScoreDisplay)
+  when (col6) (do
+              setGameAttribute (Elements (p1Score + 1, p2Score, hits))
+              setObjectCurrentPicture (p1Score+2) p1ScoreDisplay)
   when (col5 || col6) (do
                       (setObjectPosition middleScreen ball)
                       (Elements (points1, points2, hits)) <- getGameAttribute
