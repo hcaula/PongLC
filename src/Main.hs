@@ -35,11 +35,10 @@ gameCycle = do
   col1 <- objectsCollision ball p1
   col2 <- objectsCollision ball p2
   when (col1 || col2) (do
-                      (reverseXSpeed ball)
                       (setGameAttribute (Elements (p1Score, p2Score, hits+1)))
                       if ((mod hits 2) == 0) then
                         setObjectSpeed (-vx+ballIncrement, vy) ball
-                      else printOnScreen ("") TimesRoman24 (100,0) 1.0 1.0 1.0
+                      else (reverseXSpeed ball)
                       )
 
   col3 <- objectTopMapCollision ball
