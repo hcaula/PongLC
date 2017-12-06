@@ -46,4 +46,4 @@ ballSize = barWidth
 ballIncrement = 2 :: GLdouble
 
 -- Initial Ball Speed (this value is not changeable)
-ballInitialSpeed = 8 :: GLdouble
+ballInitialSpeed = 12 :: GLdouble
