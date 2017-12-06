@@ -2,7 +2,7 @@ module Main where
 
 import Inputs
 import Settings
-import Elements
+import Objects
 import Graphics.UI.Fungen
 import Graphics.Rendering.OpenGL (GLdouble)
 

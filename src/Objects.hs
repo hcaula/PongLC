@@ -1,4 +1,4 @@
-module Elements where
+module Objects where
 import Settings
 import Graphics.UI.Fungen
 import Graphics.Rendering.OpenGL (GLdouble)

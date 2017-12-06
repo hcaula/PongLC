@@ -28,3 +28,6 @@ offset = barWidth*2
 
 -- Ball size
 ballSize = barWidth;
+
+-- Bar speed
+barSpeed = 10 :: GLdouble
