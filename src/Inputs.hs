@@ -1,9 +1,10 @@
 module Inputs where
 
-import Graphics.UI.Fungen
-import Graphics.UI.GLUT
-import Graphics.Rendering.OpenGL (GLdouble)
+-- Our modules
 import Globals
+
+-- External libraries
+import Graphics.UI.Fungen
 
 movement = [
     (Char 'W', StillDown, moveP1Up),

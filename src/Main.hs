@@ -7,7 +7,6 @@ import Objects
 
 -- External libraries
 import Graphics.UI.Fungen
-import Graphics.Rendering.OpenGL (GLdouble)
 
 main :: IO ()
 main = do

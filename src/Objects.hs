@@ -1,8 +1,11 @@
 module Objects where
+
+-- Our modules
 import Globals
+
+-- External libraries
 import Graphics.UI.Fungen
 import Graphics.Rendering.OpenGL (GLdouble)
-import Data.Char
 
 createBall :: GameObject ()
 createBall =

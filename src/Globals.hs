@@ -1,4 +1,6 @@
 module Globals where
+
+-- External libraries
 import Graphics.Rendering.OpenGL (GLdouble)
 
 -- In order: P1Score, P2Score, amount of hits
