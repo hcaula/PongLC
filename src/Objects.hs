@@ -1,5 +1,5 @@
 module Objects where
-import Settings
+import Globals
 import Graphics.UI.Fungen
 import Graphics.Rendering.OpenGL (GLdouble)
 

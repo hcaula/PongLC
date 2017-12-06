@@ -3,7 +3,7 @@ module Inputs where
 import Graphics.UI.Fungen
 import Graphics.UI.GLUT
 import Graphics.Rendering.OpenGL (GLdouble)
-import Settings
+import Globals
 
 movement = [
     (Char 'W', StillDown, moveP1Up),
