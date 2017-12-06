@@ -17,7 +17,7 @@ main = do
       score = objectGroup "scoreGroup" [createScore "ScoreP1", createScore "ScoreP2"]
       initElements = Elements (0,0,0)
       input = movement
-  funInit winConfig gameMap [players,ball,score] () initElements input gameCycle (Timer 15) bmpList
+  funInit winConfig gameMap [players,ball,score] () initElements input gameCycle (Timer 30) bmpList
 
 gameCycle :: IOGame GameAttribute () () () ()
 gameCycle = do
@@ -46,8 +46,8 @@ gameCycle = do
   when (col1 || col2) (do
                       (setGameAttribute (Elements (p1Score, p2Score, hits+1)))
                       if ((mod hits 2) == 0) then
-                        setObjectSpeed (-vx+ballIncrement, vy) ball
-                      else (reverseXSpeed ball)
+                        setObjectSpeed (-vx+ballIncrement, getRandomY hits) ball
+                      else (setObjectSpeed (-vx, getRandomY hits) ball)
                       )
 
   col3 <- objectTopMapCollision ball
@@ -66,6 +66,7 @@ gameCycle = do
                       (setObjectPosition middleScreen ball)
                       (Elements (points1, points2, hits)) <- getGameAttribute
                       setGameAttribute (Elements (points1, points2, 0))
+
                       setObjectSpeed (ballInitialSpeed, vy) ball)
 
   showFPS TimesRoman24 (w-40,0) 1.0 0.0 0.0

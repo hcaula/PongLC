@@ -1,5 +1,6 @@
 module Globals where
 import Graphics.Rendering.OpenGL (GLdouble)
+import System.Random
 
 -- In order: P1Score, P2Score, amount of hits
 data GameAttribute = Elements (Int, Int, Integer)
@@ -56,3 +57,11 @@ ballIncrement = 2 :: GLdouble
 
 -- Initial Ball Speed (this value is not changeable)
 ballInitialSpeed = 12 :: GLdouble
+
+-- Random Y Limit
+randomYLimit = 10;
+
+randomNumbers = [-6, 9, -10, -2, 0, 4, 13, 6, -12, -4, -15, -4, -7, -9, 4, -5, -20, -2, -10, 3]
+
+getRandomY :: Integer -> Double
+getRandomY hits = randomNumbers!!(fromIntegral (mod hits 20))
