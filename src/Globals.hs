@@ -2,7 +2,6 @@ module Globals where
 
 -- External libraries
 import Graphics.Rendering.OpenGL (GLdouble)
-import System.Random
 
 -- In order: P1Score, P2Score, amount of hits
 data GameAttribute = Elements (Int, Int, Integer)
@@ -72,8 +71,11 @@ fontSize = (h/16, h/8)
 -- Random values for Y list
 randomNumbers = [-12, 18, -10, -2, 10, 21, 13, 12, -0, -4, -30, -10, -7, -9, 4, -20, -30, -13, -10, 3]
 
-getRandomY :: (Integer, StdGen)
-getRandomY =
-  do
-    g <- newStdGen
-    randomR (-30, 30) g
+getRandomY :: Integer -> Double
+getRandomY hits = randomNumbers!!(fromIntegral (mod hits 20))
+
+-- getRandomY :: (Integer, StdGen)
+-- getRandomY =
+--   do
+--     g <- newStdGen
+--     randomR (-30, 30) g
