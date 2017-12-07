@@ -59,11 +59,11 @@ gameCycle = do
                                         setGameAttribute (Elements (11,11,0)))
 
 
-  -- Debug values
-  printOnScreen (show p1Score) TimesRoman24 (0,0) 1.0 1.0 1.0
-  printOnScreen (show p2Score) TimesRoman24 (50,0) 1.0 1.0 1.0
-  printOnScreen (show hits) TimesRoman24 (100,0) 1.0 1.0 1.0
-  showFPS TimesRoman24 (w-40,0) 1.0 0.0 0.0
+  -- Debug values (comment them for production)
+  -- printOnScreen (show p1Score) TimesRoman24 (0,0) 1.0 1.0 1.0
+  -- printOnScreen (show p2Score) TimesRoman24 (50,0) 1.0 1.0 1.0
+  -- printOnScreen (show hits) TimesRoman24 (100,0) 1.0 1.0 1.0
+  -- showFPS TimesRoman24 (w-40,0) 1.0 0.0 0.0
 
   -- Debug the ball's horizontal speed
   let (vx,vy) = getGameObjectSpeed ball
