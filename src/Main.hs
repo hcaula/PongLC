@@ -64,10 +64,10 @@ gameCycle = do
   -- printOnScreen (show p2Score) TimesRoman24 (50,0) 1.0 1.0 1.0
   -- printOnScreen (show hits) TimesRoman24 (100,0) 1.0 1.0 1.0
   -- showFPS TimesRoman24 (w-40,0) 1.0 0.0 0.0
+  -- -- Debug the ball's horizontal speed
+  -- printOnScreen (show vx) TimesRoman24 (150,0) 1.0 1.0 1.0
 
-  -- Debug the ball's horizontal speed
   let (vx,vy) = getGameObjectSpeed ball
-  printOnScreen (show vx) TimesRoman24 (150,0) 1.0 1.0 1.0
 
   -- Collisions: ball-player
   col1 <- objectsCollision ball p1
